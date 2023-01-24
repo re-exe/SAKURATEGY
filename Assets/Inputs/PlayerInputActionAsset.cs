@@ -566,6 +566,56 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""1a2e0ad4-63e2-448a-950f-ca06f81c5e65"",
+            ""actions"": [
+                {
+                    ""name"": ""DebugWinow"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e2f8351-504d-4dd3-b90b-5c04c41e92b7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""c3e498f6-bad4-41c3-aa27-75ada3ba10c8"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugWinow"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""526d6ecf-daa3-4b46-bd63-64aa9d81546b"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugWinow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""42040d5d-a262-4086-9d81-dec7f55eecdd"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugWinow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -607,6 +657,9 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_DebugWinow = m_Debug.FindAction("DebugWinow", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -800,6 +853,39 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private IDebugActions m_DebugActionsCallbackInterface;
+    private readonly InputAction m_Debug_DebugWinow;
+    public struct DebugActions
+    {
+        private @PlayerInputScript m_Wrapper;
+        public DebugActions(@PlayerInputScript wrapper) { m_Wrapper = wrapper; }
+        public InputAction @DebugWinow => m_Wrapper.m_Debug_DebugWinow;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void SetCallbacks(IDebugActions instance)
+        {
+            if (m_Wrapper.m_DebugActionsCallbackInterface != null)
+            {
+                @DebugWinow.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugWinow;
+                @DebugWinow.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugWinow;
+                @DebugWinow.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugWinow;
+            }
+            m_Wrapper.m_DebugActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @DebugWinow.started += instance.OnDebugWinow;
+                @DebugWinow.performed += instance.OnDebugWinow;
+                @DebugWinow.canceled += instance.OnDebugWinow;
+            }
+        }
+    }
+    public DebugActions @Debug => new DebugActions(this);
     private int m_PlayerInputControllSchemeIndex = -1;
     public InputControlScheme PlayerInputControllScheme
     {
@@ -825,5 +911,9 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IDebugActions
+    {
+        void OnDebugWinow(InputAction.CallbackContext context);
     }
 }
