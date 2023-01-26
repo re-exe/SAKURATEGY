@@ -26,30 +26,8 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
         {
             ""name"": ""Player"",
             ""id"": ""91a462bf-2725-4dc8-b9a2-7ff06a3ae017"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""f314a292-1501-4d81-8837-72c197ce38ef"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""7afbd894-6a75-437a-952e-81221517c504"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
+            ""actions"": [],
+            ""bindings"": []
         },
         {
             ""name"": ""UI"",
@@ -141,6 +119,15 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""b2a72936-b7f6-4da8-8541-e5198f836b27"",
                     ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Debug"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""9b25659d-d1e3-4171-9b51-d299cd0ea5e3"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -564,58 +551,47 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""06b58bf1-f8cd-40e2-bbdc-173c71ec1267"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""68608381-0abb-444a-bcd2-f82266807038"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""281d847c-2a65-4cee-9f03-6a121b9456bf"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
         {
             ""name"": ""Debug"",
             ""id"": ""1a2e0ad4-63e2-448a-950f-ca06f81c5e65"",
-            ""actions"": [
-                {
-                    ""name"": ""DebugWinow"",
-                    ""type"": ""Button"",
-                    ""id"": ""2e2f8351-504d-4dd3-b90b-5c04c41e92b7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""c3e498f6-bad4-41c3-aa27-75ada3ba10c8"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""DebugWinow"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""526d6ecf-daa3-4b46-bd63-64aa9d81546b"",
-                    ""path"": ""<Keyboard>/ctrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""DebugWinow"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""42040d5d-a262-4086-9d81-dec7f55eecdd"",
-                    ""path"": ""<Keyboard>/m"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""DebugWinow"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                }
-            ]
+            ""actions"": [],
+            ""bindings"": []
         }
     ],
     ""controlSchemes"": [
@@ -644,7 +620,6 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Newaction = m_Player.FindAction("New action", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -657,9 +632,9 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_Debug = m_UI.FindAction("Debug", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
-        m_Debug_DebugWinow = m_Debug.FindAction("DebugWinow", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -719,12 +694,10 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Newaction;
     public struct PlayerActions
     {
         private @PlayerInputScript m_Wrapper;
         public PlayerActions(@PlayerInputScript wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Player_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -734,16 +707,10 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNewaction;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
             }
         }
     }
@@ -762,6 +729,7 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_Debug;
     public struct UIActions
     {
         private @PlayerInputScript m_Wrapper;
@@ -776,6 +744,7 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputAction @Debug => m_Wrapper.m_UI_Debug;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -815,6 +784,9 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
                 @TrackedDeviceOrientation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
+                @Debug.started -= m_Wrapper.m_UIActionsCallbackInterface.OnDebug;
+                @Debug.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnDebug;
+                @Debug.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnDebug;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -849,6 +821,9 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @Debug.started += instance.OnDebug;
+                @Debug.performed += instance.OnDebug;
+                @Debug.canceled += instance.OnDebug;
             }
         }
     }
@@ -857,12 +832,10 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
     // Debug
     private readonly InputActionMap m_Debug;
     private IDebugActions m_DebugActionsCallbackInterface;
-    private readonly InputAction m_Debug_DebugWinow;
     public struct DebugActions
     {
         private @PlayerInputScript m_Wrapper;
         public DebugActions(@PlayerInputScript wrapper) { m_Wrapper = wrapper; }
-        public InputAction @DebugWinow => m_Wrapper.m_Debug_DebugWinow;
         public InputActionMap Get() { return m_Wrapper.m_Debug; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -872,16 +845,10 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_DebugActionsCallbackInterface != null)
             {
-                @DebugWinow.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugWinow;
-                @DebugWinow.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugWinow;
-                @DebugWinow.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugWinow;
             }
             m_Wrapper.m_DebugActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @DebugWinow.started += instance.OnDebugWinow;
-                @DebugWinow.performed += instance.OnDebugWinow;
-                @DebugWinow.canceled += instance.OnDebugWinow;
             }
         }
     }
@@ -897,7 +864,6 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
     }
     public interface IPlayerActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -911,9 +877,9 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        void OnDebug(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {
-        void OnDebugWinow(InputAction.CallbackContext context);
     }
 }

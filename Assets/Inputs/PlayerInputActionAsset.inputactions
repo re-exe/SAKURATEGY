@@ -4,30 +4,8 @@
         {
             "name": "Player",
             "id": "91a462bf-2725-4dc8-b9a2-7ff06a3ae017",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "f314a292-1501-4d81-8837-72c197ce38ef",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "7afbd894-6a75-437a-952e-81221517c504",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
+            "actions": [],
+            "bindings": []
         },
         {
             "name": "UI",
@@ -119,6 +97,15 @@
                     "type": "PassThrough",
                     "id": "b2a72936-b7f6-4da8-8541-e5198f836b27",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Debug",
+                    "type": "PassThrough",
+                    "id": "9b25659d-d1e3-4171-9b51-d299cd0ea5e3",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -542,58 +529,47 @@
                     "action": "TrackedDeviceOrientation",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "06b58bf1-f8cd-40e2-bbdc-173c71ec1267",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Debug",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "68608381-0abb-444a-bcd2-f82266807038",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Debug",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "281d847c-2a65-4cee-9f03-6a121b9456bf",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Debug",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
         {
             "name": "Debug",
             "id": "1a2e0ad4-63e2-448a-950f-ca06f81c5e65",
-            "actions": [
-                {
-                    "name": "DebugWinow",
-                    "type": "Button",
-                    "id": "2e2f8351-504d-4dd3-b90b-5c04c41e92b7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "One Modifier",
-                    "id": "c3e498f6-bad4-41c3-aa27-75ada3ba10c8",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DebugWinow",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "526d6ecf-daa3-4b46-bd63-64aa9d81546b",
-                    "path": "<Keyboard>/ctrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DebugWinow",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "42040d5d-a262-4086-9d81-dec7f55eecdd",
-                    "path": "<Keyboard>/m",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DebugWinow",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                }
-            ]
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [

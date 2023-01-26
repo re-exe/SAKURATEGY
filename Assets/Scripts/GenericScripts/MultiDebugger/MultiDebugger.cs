@@ -1,40 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-namespace Debugger{
-    public class MultiDebugger : MonoBehaviour{
+public class MultiDebugger : MonoBehaviour{
 
-        [Tooltip("インスタンス")]
-        public static MultiDebugger instance = null;
+    [Tooltip("入力")]
+    private PlayerInputScript m_input = null;
 
-        [Tooltip("入力")]
-        private PlayerInputScript m_input = null;
-        
-        private void OnEnable() { m_input.Enable(); }
+    [Tooltip("インスタンス")]
+    private static MultiDebugger instance = null;
 
-        private void OnDisable() { m_input.Disable(); }
+    [Tooltip("子のオブジェクト")]
+    private GameObject m_childrenObject = null;
 
-        private void Awake() {
-
-            // インスタンス生成
-            if(!instance){
-                instance = this;
-                DontDestroyOnLoad(gameObject);
-            } else {
-                Destroy(gameObject);
-            }
-            this.gameObject.SetActive(false);
-
-            m_input = new PlayerInputScript();
-
-            m_input.Debug.DebugWinow.performed += DebuggerWindowSwitch;
+    private void Start() {
+        if(instance == null){
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        } else {
+            Destroy(this.gameObject);
         }
 
-        private void DebuggerWindowSwitch(InputAction.CallbackContext context){
-            this.gameObject.SetActive(!this.gameObject.activeSelf);
+        // 色々取得
+        m_input = new PlayerInputScript();
+        m_input.Enable();
+        m_childrenObject = this.transform.GetChild(0).gameObject;
+
+        if(m_childrenObject == null){
+            m_childrenObject = this.transform.Find("DebugCanvas").gameObject;
         }
+
+        // 初期は非表示
+        m_childrenObject.SetActive(false);
+
+        m_input.UI.Debug.performed += _ => {
+            m_childrenObject.SetActive(!m_childrenObject.activeSelf);
+        };
     }
 }
-
