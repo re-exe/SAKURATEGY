@@ -9,8 +9,11 @@ using UniRx.Triggers;
 /// </summary>
 public class MainManager : MonoBehaviour{
 
+    [Tooltip("Instance")]
+    public static MainManager instance = null;
+
     [Header("ゲーム更新許可")]
-    public bool gameUpdatePermit = true;
+    public bool gameUpdatePermit = false;
 
     [SerializeField]
     [Tooltip("出現時間リスト")]
@@ -24,6 +27,15 @@ public class MainManager : MonoBehaviour{
 
     [Tooltip("初期化フラグ")]
     private bool initFlag = false;
+
+
+    /*-------------------------------------------------------------------------------*/
+    [Space(10)]
+    [Header("CountDown")]
+    
+    [SerializeField]
+    [Tooltip("カウントダウン画面")]
+    private GameObject countDownWindow = null;
 
     
 
@@ -45,12 +57,19 @@ public class MainManager : MonoBehaviour{
     }
 
     private void Awake() {
+
+        // インスタンス生成
+        if(!instance)
+            instance = this;
         
         // ゲームメインの更新
         this.UpdateAsObservable()
             .Where(_=> gameUpdatePermit)
             .Subscribe(_=>UpdateState())
             .AddTo(this);
+
+        ChangeState(MAIN_STATE.COUNTDOWN);
+        gameUpdatePermit = true;
     }
 
     // 更新処理
@@ -73,6 +92,7 @@ public class MainManager : MonoBehaviour{
     private void CountDown(){
         if(initFlag){
             initFlag = false;
+            countDownWindow.SetActive(true);
         }
     }
 
