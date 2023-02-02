@@ -9,8 +9,23 @@ public class CharacterGenerate : MonoBehaviour{
     [Tooltip("キャラクターのPrefab名")]
     private string charaName = "";
 
+    [SerializeField]
+    [Tooltip("ID")]
+    private TREE_ID id = TREE_ID.MAX;
+
     [Tooltip("Prefab保存変数")]
     private GameObject m_character = null;
+
+    [Tooltip("キャラクターの種類ID")]
+    private enum TREE_ID{
+        SOMEIYOSHINO,
+        KANHIZAKURA,
+        KAWAZUSAKURA,
+        HIGANZAKURA,
+        OYAMAZAKURA,
+        MAX
+    }
+
 
     private void Awake() {
         
@@ -55,6 +70,8 @@ public class CharacterGenerate : MonoBehaviour{
     /// </summary>
     public void PointerEnter(){
         Debug.Log(this.gameObject.name.ToString() + "に接触した");
+
+        DescriptionManager.instance.OpenDescription((int)id);
     }
 
     /// <summary>
@@ -62,6 +79,8 @@ public class CharacterGenerate : MonoBehaviour{
     /// </summary>
     public void PointerExit(){
         Debug.Log(this.gameObject.name.ToString() + "から離れた");
+
+        DescriptionManager.instance.CloseDescription();
     }
 
     /// <summary>
