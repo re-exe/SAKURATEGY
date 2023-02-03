@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using UniRx;
+using UniRx.Triggers;
 
 public class CharacterGenerate : MonoBehaviour{
 
@@ -16,6 +19,9 @@ public class CharacterGenerate : MonoBehaviour{
     [Tooltip("Prefab保存変数")]
     private GameObject m_character = null;
 
+    [Tooltip("Input")]
+    private PlayerInputScript m_input = null;
+
     [Tooltip("キャラクターの種類ID")]
     private enum TREE_ID{
         SOMEIYOSHINO,
@@ -26,14 +32,20 @@ public class CharacterGenerate : MonoBehaviour{
         MAX
     }
 
+    private void OnEnable() { m_input.Enable(); }
+
+    private void OnDisable() { m_input.Disable(); }
+
 
     private void Awake() {
+
+        m_input = new PlayerInputScript();
         
         // Prefabのロード
         m_character = (GameObject)Resources.Load("Prefabs/Character/" + charaName);
 
         if(!m_character){
-            Debug.LogError(charaName + "の生成ができませんでした。　パスを確認してください。");
+            Debug.LogWarning(charaName + "の生成ができませんでした。　パスを確認してください。");
         }
 
         // EventTriggerの取得
@@ -88,6 +100,9 @@ public class CharacterGenerate : MonoBehaviour{
     /// </summary>
     public void PointerDown(){
         Debug.Log(this.gameObject.name.ToString() + " : 押下(ON)");
+        GameObject c = Instantiate(m_character);
+        
+        //TODO:キャラクターにマウスカーソルを追わせる。
     }
 
     /// <summary>

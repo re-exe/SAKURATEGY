@@ -423,10 +423,10 @@ public partial class @PlayerInputScript : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d8d08275-af2e-41a1-9c9f-7d32bf27cc37"",
-                    ""path"": ""<Mouse>/position"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse;PlayerInputControll"",
                     ""action"": ""Point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

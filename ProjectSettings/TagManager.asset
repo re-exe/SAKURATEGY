@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Manager
   - Character
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -45,4 +46,7 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 2622138525
+    locked: 0
+  - name: Enemy
+    uniqueID: 2054221823
     locked: 0
