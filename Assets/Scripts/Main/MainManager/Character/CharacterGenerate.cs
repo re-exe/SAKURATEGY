@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
-using UniRx;
-using UniRx.Triggers;
 
 public class CharacterGenerate : MonoBehaviour{
 
@@ -100,9 +98,8 @@ public class CharacterGenerate : MonoBehaviour{
     /// </summary>
     public void PointerDown(){
         Debug.Log(this.gameObject.name.ToString() + " : 押下(ON)");
-        GameObject c = Instantiate(m_character);
-        
-        //TODO:キャラクターにマウスカーソルを追わせる。
+
+        InstantiateSystem.instance.CharacterInstantiate(m_character);
     }
 
     /// <summary>
@@ -110,5 +107,6 @@ public class CharacterGenerate : MonoBehaviour{
     /// </summary>
     public void PointerUp(){
         Debug.Log(this.gameObject.name.ToString() + " : 押下(OFF)");
+        InstantiateSystem.instance.trackingFlag = false;
     }
 }
