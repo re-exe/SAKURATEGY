@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 92185213}
   - component: {fileID: 92185215}
   - component: {fileID: 92185217}
-  - component: {fileID: 92185216}
   m_Layer: 5
   m_Name: Higanzakura
   m_TagString: Untagged
@@ -228,20 +227,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &92185216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92185211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc9884c34c6d01d45b36b818c5119368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charaName: Higanzakura
-  id: 3
 --- !u!114 &92185217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +253,6 @@ GameObject:
   - component: {fileID: 190201508}
   - component: {fileID: 190201510}
   - component: {fileID: 190201512}
-  - component: {fileID: 190201511}
   m_Layer: 5
   m_Name: Someiyoshino
   m_TagString: Untagged
@@ -360,20 +344,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &190201511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190201506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc9884c34c6d01d45b36b818c5119368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charaName: Someiyoshino
-  id: 0
 --- !u!114 &190201512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,7 +720,7 @@ RectTransform:
   - {fileID: 1545511824}
   - {fileID: 853763311}
   m_Father: {fileID: 908157434}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -833,6 +803,170 @@ MonoBehaviour:
   optionButton: {fileID: 1545511825}
   closeButton: {fileID: 715153509}
   optionWindow: {fileID: 853763310}
+--- !u!1 &641488734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 641488736}
+  - component: {fileID: 641488735}
+  m_Layer: 0
+  m_Name: EnemyInstantiateSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &641488735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641488734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7c18fb2411eef34c9af11c9c88f942e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyList:
+  - path: Prefabs/Enemy/Crane
+    prefab: {fileID: 0}
+    time: 10
+    instantiatePosition: {x: 0, y: 0, z: 0}
+    id: 0
+  - path: Prefabs/Enemy/Crystal
+    prefab: {fileID: 0}
+    time: 20
+    instantiatePosition: {x: 0, y: 0, z: 0}
+    id: 1
+  - path: Prefabs/Enemy/SnowRabbit
+    prefab: {fileID: 0}
+    time: 100
+    instantiatePosition: {x: 0, y: 0, z: 0}
+    id: 2
+  enemySpawnParent: {fileID: 1980250250}
+--- !u!4 &641488736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641488734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &704563478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 704563482}
+  - component: {fileID: 704563481}
+  - component: {fileID: 704563480}
+  - component: {fileID: 704563479}
+  m_Layer: 5
+  m_Name: BackCnavas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &704563479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704563478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &704563480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704563478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &704563481
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704563478}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 1
+  m_Camera: {fileID: 2129579806}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &704563482
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704563478}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1813673025}
+  - {fileID: 1775002563}
+  - {fileID: 1108063647}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &715153505
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,7 +1119,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &774796886
 MonoBehaviour:
@@ -1000,14 +1134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameUpdatePermit: 1
-  EnemySpawnTimeList:
-  - name: 
-    time: 0
-  - name: 
-    time: 0
-  - name: 
-    time: 0
-  countDownWindow: {fileID: 0}
 --- !u!1 &853763310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,7 +1247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2014750549010254399, guid: 990f5782fa1a05945be17e0ffff4b397, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2014750549010254399, guid: 990f5782fa1a05945be17e0ffff4b397, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1280,7 +1406,7 @@ RectTransform:
   - {fileID: 982299686}
   - {fileID: 2128295993}
   m_Father: {fileID: 908157434}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1797,13 +1923,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108063646}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -3239.9998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 908157434}
-  m_RootOrder: 5
+  m_Father: {fileID: 704563482}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1938,7 +2064,6 @@ GameObject:
   - component: {fileID: 1240619863}
   - component: {fileID: 1240619865}
   - component: {fileID: 1240619867}
-  - component: {fileID: 1240619866}
   m_Layer: 5
   m_Name: Oyamazakura
   m_TagString: Untagged
@@ -2030,20 +2155,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1240619866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240619861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc9884c34c6d01d45b36b818c5119368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charaName: Oyamazakura
-  id: 4
 --- !u!114 &1240619867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2163,7 +2274,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1283186476
 MonoBehaviour:
@@ -2192,7 +2303,6 @@ GameObject:
   - component: {fileID: 1344667394}
   - component: {fileID: 1344667396}
   - component: {fileID: 1344667398}
-  - component: {fileID: 1344667397}
   m_Layer: 5
   m_Name: Kanhizakura
   m_TagString: Untagged
@@ -2284,20 +2394,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1344667397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344667392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc9884c34c6d01d45b36b818c5119368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charaName: Kanhizakura
-  id: 1
 --- !u!114 &1344667398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2347,7 +2443,7 @@ RectTransform:
   - {fileID: 437538818}
   - {fileID: 1623251032}
   m_Father: {fileID: 908157434}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2370,7 +2466,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &1352451725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2442,7 +2538,6 @@ GameObject:
   - component: {fileID: 1532666449}
   - component: {fileID: 1532666451}
   - component: {fileID: 1532666453}
-  - component: {fileID: 1532666452}
   m_Layer: 5
   m_Name: Kawazusakura
   m_TagString: Untagged
@@ -2534,20 +2629,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1532666452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1532666447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc9884c34c6d01d45b36b818c5119368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charaName: Kawazusakura
-  id: 2
 --- !u!114 &1532666453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3193,13 +3274,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775002562}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -3239.9998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 908157434}
-  m_RootOrder: 4
+  m_Father: {fileID: 704563482}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3285,13 +3366,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813673024}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 908157434}
-  m_RootOrder: 1
+  m_Father: {fileID: 704563482}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3471,6 +3552,109 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847553968}
   m_CullTransparentMesh: 1
+--- !u!1 &1908080557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1908080559}
+  - component: {fileID: 1908080558}
+  m_Layer: 0
+  m_Name: CharacterGenerateSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1908080558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908080557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57cd28ef5ab8f8a488fc2bf1e957f693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterList:
+  - prefab: {fileID: 0}
+    obj: {fileID: 190201506}
+    path: Prefabs/Character/Someiyoshino
+    trigger: {fileID: 0}
+    id: 0
+  - prefab: {fileID: 0}
+    obj: {fileID: 1344667392}
+    path: Prefabs/Character/Kanhizakura
+    trigger: {fileID: 0}
+    id: 1
+  - prefab: {fileID: 0}
+    obj: {fileID: 1532666447}
+    path: Prefabs/Character/Kawazusakura
+    trigger: {fileID: 0}
+    id: 2
+  - prefab: {fileID: 0}
+    obj: {fileID: 92185211}
+    path: Prefabs/Character/Higanzakura
+    trigger: {fileID: 0}
+    id: 3
+  - prefab: {fileID: 0}
+    obj: {fileID: 1240619861}
+    path: Prefabs/Character/Oyamazakura
+    trigger: {fileID: 0}
+    id: 4
+  boxObj: {fileID: 1623251031}
+  text: {fileID: 1847553970}
+--- !u!4 &1908080559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908080557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1980250250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1980250251}
+  m_Layer: 0
+  m_Name: EnemySpawnParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1980250251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980250250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2029661334
 GameObject:
   m_ObjectHideFlags: 0

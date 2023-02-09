@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
 public class CharacterGenerate : MonoBehaviour{
@@ -43,7 +42,7 @@ public class CharacterGenerate : MonoBehaviour{
         m_character = (GameObject)Resources.Load("Prefabs/Character/" + charaName);
 
         if(!m_character){
-            Debug.LogWarning(charaName + "の生成ができませんでした。　パスを確認してください。");
+            Debug.LogWarning(charaName + "の生成ができませんでした。 パスを確認してください。");
         }
 
         // EventTriggerの取得

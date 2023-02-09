@@ -15,10 +15,6 @@ public class MainManager : MonoBehaviour{
     [Header("ゲーム更新許可")]
     public bool gameUpdatePermit = false;
 
-    [SerializeField]
-    [Tooltip("出現時間リスト")]
-    private List<EnemySpawnTime> EnemySpawnTimeList = new List<EnemySpawnTime>();
-
     [Tooltip("現在の状態")]
     private MAIN_STATE m_nowState = MAIN_STATE.DUMMY;
 
@@ -30,13 +26,6 @@ public class MainManager : MonoBehaviour{
 
 
     /*-------------------------------------------------------------------------------*/
-    [Space(10)]
-    [Header("CountDown")]
-    
-    [SerializeField]
-    [Tooltip("カウントダウン画面")]
-    private GameObject countDownWindow = null;
-
     
 
     public enum MAIN_STATE{
@@ -45,15 +34,6 @@ public class MainManager : MonoBehaviour{
         START,
         MAIN,
         RESULT
-    }
-
-    [System.Serializable]
-    public class EnemySpawnTime{
-        [Header("名前")]
-        public string name = "";
-
-        [Header("スポーンまでの経過時間")]
-        public float time = 0f;
     }
 
     private void Awake() {
@@ -87,18 +67,22 @@ public class MainManager : MonoBehaviour{
         m_preState = m_nowState;
         m_nowState = state;
         initFlag = true;
+        Debug.Log("NowState : " + m_nowState.ToString());
     }
 
     private void CountDown(){
         if(initFlag){
             initFlag = false;
-            countDownWindow.SetActive(true);
+            ChangeState(MAIN_STATE.START);
         }
     }
 
     private void GameStart(){
         if(initFlag){
             initFlag = false;
+
+            EnemyInstantiateSystem.instance.EnemyInstantiateStart();
+            ChangeState(MAIN_STATE.MAIN);
         }
     }
 
