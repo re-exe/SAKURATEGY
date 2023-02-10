@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
+using DG.Tweening;
 
 /// <summary>
 /// ゲームメインを管理する
@@ -25,11 +26,30 @@ public class MainManager : MonoBehaviour{
     [Tooltip("初期化フラグ")]
     private bool initFlag = false;
 
+    /*-------------------------------------------------------------------------------*/
+
     [Space(10)]
     [Header("消費リソース系")]
 
     [Tooltip("温暖ゲージ")]
     public Image warmGauge = null;
+
+    [Tooltip("敵ゲージ")]
+    public Image enemyGauge = null;
+
+    /*-------------------------------------------------------------------------------*/
+
+    [Space(10)]
+    [Header("ゲームスタート画面")]
+
+    [SerializeField]
+    [Tooltip("画面")]
+    private GameObject startPanel = null;
+
+    [SerializeField]
+    [Tooltip("テキスト")]
+    private CanvasGroup startText = null;
+    
 
 
     /*-------------------------------------------------------------------------------*/
@@ -58,8 +78,11 @@ public class MainManager : MonoBehaviour{
         ChangeState(MAIN_STATE.COUNTDOWN);
         gameUpdatePermit = true;
 
-        // 温暖ゲージを0に設定
+        // ゲージ系を0に設定
         warmGauge.fillAmount = 0f;
+        enemyGauge.fillAmount = 0f;
+
+        startText.alpha = 0f;
     }
 
     // 更新処理
@@ -83,7 +106,13 @@ public class MainManager : MonoBehaviour{
     private void CountDown(){
         if(initFlag){
             initFlag = false;
-            ChangeState(MAIN_STATE.START);
+
+            enemyGauge.DOFillAmount(1f, 3f)
+                .SetAutoKill(true)
+                .SetEase(Ease.Linear)
+                .Play()
+                .OnComplete(() => ChangeState(MAIN_STATE.START));
+            
         }
     }
 
@@ -91,8 +120,21 @@ public class MainManager : MonoBehaviour{
         if(initFlag){
             initFlag = false;
 
-            EnemyInstantiateSystem.instance.EnemyInstantiateStart();
-            ChangeState(MAIN_STATE.MAIN);
+            startText.DOFade(1f, 0.8f)
+                .SetEase(Ease.Flash, 11)
+                .SetAutoKill(true)
+                .Play()
+                .OnComplete(() =>{
+
+                    startPanel.transform.DOLocalMoveY(-720f, 2f)
+                        .SetEase(Ease.OutQuart)
+                        .SetAutoKill(true)
+                        .Play()
+                        .OnComplete(() =>{
+                             EnemyInstantiateSystem.instance.EnemyInstantiateStart();
+                            ChangeState(MAIN_STATE.MAIN);
+                        });
+                });
         }
     }
 
@@ -120,7 +162,6 @@ public class MainManager : MonoBehaviour{
             // 0.5秒ごとに1%増加させる
             yield return new WaitForSeconds(0.5f);
             warmGauge.fillAmount += 0.01f;
-            Debug.Log(warmGauge.fillAmount.ToString());
 
             if(warmGauge.fillAmount == 1f){
                 warmGauge.fillAmount = 1f;
