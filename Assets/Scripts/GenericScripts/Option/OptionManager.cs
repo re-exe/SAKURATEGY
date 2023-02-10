@@ -28,6 +28,7 @@ public class OptionManager : MonoBehaviour{
             .Subscribe(_=> {
                 optionWindow.SetActive(true);
                 MainManager.instance.gameUpdatePermit = false;
+                Time.timeScale = 0f;
                 }).AddTo(this);
 
         // オプション閉じる
@@ -36,6 +37,7 @@ public class OptionManager : MonoBehaviour{
             .Subscribe(_=> {
                 optionWindow.SetActive(false);
                 MainManager.instance.gameUpdatePermit = true;
+                Time.timeScale = 1f;
                 }).AddTo(this);
     }
 }

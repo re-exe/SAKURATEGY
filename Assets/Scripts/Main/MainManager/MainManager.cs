@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 
@@ -23,6 +24,12 @@ public class MainManager : MonoBehaviour{
 
     [Tooltip("初期化フラグ")]
     private bool initFlag = false;
+
+    [Space(10)]
+    [Header("消費リソース系")]
+
+    [Tooltip("温暖ゲージ")]
+    public Image warmGauge = null;
 
 
     /*-------------------------------------------------------------------------------*/
@@ -50,6 +57,9 @@ public class MainManager : MonoBehaviour{
 
         ChangeState(MAIN_STATE.COUNTDOWN);
         gameUpdatePermit = true;
+
+        // 温暖ゲージを0に設定
+        warmGauge.fillAmount = 0f;
     }
 
     // 更新処理
@@ -89,12 +99,32 @@ public class MainManager : MonoBehaviour{
     private void MainUpdate(){
         if(initFlag){
             initFlag = false;
+
+            StartCoroutine(warmGaugeAdditionCol());
         }
     }
 
     private void Result(){
         if(initFlag){
             initFlag = false;
+        }
+    }
+
+    /// <summary>
+    /// 温暖ゲージの加算処理(非同期)
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator warmGaugeAdditionCol(){
+        while(gameUpdatePermit){
+
+            // 0.5秒ごとに1%増加させる
+            yield return new WaitForSeconds(0.5f);
+            warmGauge.fillAmount += 0.01f;
+            Debug.Log(warmGauge.fillAmount.ToString());
+
+            if(warmGauge.fillAmount == 1f){
+                warmGauge.fillAmount = 1f;
+            }
         }
     }
 }

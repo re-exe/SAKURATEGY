@@ -6,8 +6,6 @@ using TMPro;
 
 public class CharacterGenerateSystem : MonoBehaviour{
 
-    
-
     [Tooltip("Input")]
     private PlayerInputScript m_input = null;
 
@@ -86,6 +84,7 @@ public class CharacterGenerateSystem : MonoBehaviour{
                 return;
             }
 
+            // D&Dイベントの登録
             EventTrigger.Entry enter = new EventTrigger.Entry();
             enter.eventID = EventTriggerType.PointerEnter;
             enter.callback.AddListener((e) => PointerEnter(prop.id));
@@ -126,6 +125,7 @@ public class CharacterGenerateSystem : MonoBehaviour{
     }
 
     public void PointerUp(){
-        InstantiateSystem.instance.trackingFlag = false;
+        InstantiateSystem.instance.InstantiateNewPosition();
+        InstantiateSystem.instance.DestroyCharacterCash();
     }
 }

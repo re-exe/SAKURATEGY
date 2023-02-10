@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 92185213}
   - component: {fileID: 92185215}
   - component: {fileID: 92185217}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Higanzakura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 190201508}
   - component: {fileID: 190201510}
   - component: {fileID: 190201512}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Someiyoshino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 318830900}
   - component: {fileID: 318830902}
   - component: {fileID: 318830901}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: EnemyGauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 437538818}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 491839826}
   - component: {fileID: 491839828}
   - component: {fileID: 491839827}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: WarmGauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 605039746}
   - component: {fileID: 605039748}
   - component: {fileID: 605039747}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 629880233}
   - component: {fileID: 629880232}
   - component: {fileID: 629880235}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +862,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &704563478
 GameObject:
@@ -942,7 +942,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &704563482
 RectTransform:
@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 715153508}
   - component: {fileID: 715153507}
   - component: {fileID: 715153509}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,7 +1119,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &774796886
 MonoBehaviour:
@@ -1134,6 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameUpdatePermit: 1
+  warmGauge: {fileID: 491839827}
 --- !u!1 &853763310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,7 +1146,7 @@ GameObject:
   - component: {fileID: 853763311}
   - component: {fileID: 853763313}
   - component: {fileID: 853763312}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: OptionWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1225,10 +1226,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2014750549010254395, guid: 990f5782fa1a05945be17e0ffff4b397, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2014750549010254396, guid: 990f5782fa1a05945be17e0ffff4b397, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2129579806}
+    - target: {fileID: 2014750549010254396, guid: 990f5782fa1a05945be17e0ffff4b397, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2014750549010254397, guid: 990f5782fa1a05945be17e0ffff4b397, type: 3}
       propertyPath: m_ReferenceResolution.x
       value: 1280
@@ -1247,7 +1256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2014750549010254399, guid: 990f5782fa1a05945be17e0ffff4b397, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2014750549010254399, guid: 990f5782fa1a05945be17e0ffff4b397, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1321,6 +1330,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2014750550475547206, guid: 990f5782fa1a05945be17e0ffff4b397, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2014750550475547224, guid: 990f5782fa1a05945be17e0ffff4b397, type: 3}
       propertyPath: m_MoveAction
       value: 
@@ -1384,7 +1397,7 @@ GameObject:
   - component: {fileID: 924275459}
   - component: {fileID: 924275458}
   - component: {fileID: 924275457}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: EnemyDataCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1485,7 +1498,7 @@ GameObject:
   - component: {fileID: 967068038}
   - component: {fileID: 967068040}
   - component: {fileID: 967068039}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1620,7 +1633,7 @@ GameObject:
   - component: {fileID: 982299686}
   - component: {fileID: 982299688}
   - component: {fileID: 982299687}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: EnemyIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1697,7 +1710,7 @@ GameObject:
   - component: {fileID: 1019072639}
   - component: {fileID: 1019072641}
   - component: {fileID: 1019072640}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1832,7 +1845,7 @@ GameObject:
   - component: {fileID: 1030924930}
   - component: {fileID: 1030924932}
   - component: {fileID: 1030924931}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: OperationExplanation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1985,7 +1998,7 @@ GameObject:
   - component: {fileID: 1214213613}
   - component: {fileID: 1214213615}
   - component: {fileID: 1214213614}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: WarmGaugeFlame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2064,7 +2077,7 @@ GameObject:
   - component: {fileID: 1240619863}
   - component: {fileID: 1240619865}
   - component: {fileID: 1240619867}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Oyamazakura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2179,7 +2192,7 @@ GameObject:
   - component: {fileID: 1275331646}
   - component: {fileID: 1275331648}
   - component: {fileID: 1275331647}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: EnemyIcon(C)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2274,7 +2287,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1283186476
 MonoBehaviour:
@@ -2290,6 +2303,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackingFlag: 1
   m_areaColl: {fileID: 1775002566}
+  characterSpawnParent: {fileID: 1312620041}
+--- !u!1 &1312620041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1312620042}
+  m_Layer: 0
+  m_Name: CharacterSpawnParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1312620042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312620041}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1344667392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,7 +2348,7 @@ GameObject:
   - component: {fileID: 1344667394}
   - component: {fileID: 1344667396}
   - component: {fileID: 1344667398}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Kanhizakura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2420,7 +2465,7 @@ GameObject:
   - component: {fileID: 1352451725}
   - component: {fileID: 1352451724}
   - component: {fileID: 1352451727}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PlayerDataCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2463,10 +2508,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  m_BlockingObjects: 1
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 160
 --- !u!114 &1352451725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2538,7 +2583,7 @@ GameObject:
   - component: {fileID: 1532666449}
   - component: {fileID: 1532666451}
   - component: {fileID: 1532666453}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Kawazusakura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2653,7 +2698,7 @@ GameObject:
   - component: {fileID: 1536280372}
   - component: {fileID: 1536280374}
   - component: {fileID: 1536280373}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2789,7 +2834,7 @@ GameObject:
   - component: {fileID: 1545511827}
   - component: {fileID: 1545511826}
   - component: {fileID: 1545511825}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: OptionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2909,7 +2954,7 @@ GameObject:
   - component: {fileID: 1565424103}
   - component: {fileID: 1565424105}
   - component: {fileID: 1565424104}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3044,7 +3089,7 @@ GameObject:
   - component: {fileID: 1623251032}
   - component: {fileID: 1623251034}
   - component: {fileID: 1623251033}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3123,7 +3168,7 @@ GameObject:
   - component: {fileID: 1700173892}
   - component: {fileID: 1700173894}
   - component: {fileID: 1700173895}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: AudioSwitchButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3428,7 +3473,7 @@ GameObject:
   - component: {fileID: 1847553969}
   - component: {fileID: 1847553971}
   - component: {fileID: 1847553970}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3452,7 +3497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000053048, y: -0}
+  m_AnchoredPosition: {x: 0.0000053048, y: 0}
   m_SizeDelta: {x: 454.75, y: 109.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1847553970
@@ -3622,7 +3667,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1980250250
 GameObject:
@@ -3666,7 +3711,7 @@ GameObject:
   - component: {fileID: 2029661335}
   - component: {fileID: 2029661337}
   - component: {fileID: 2029661336}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Audios
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3744,7 +3789,7 @@ GameObject:
   - component: {fileID: 2128295993}
   - component: {fileID: 2128295995}
   - component: {fileID: 2128295994}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: EnemyGaugeFlame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3912,7 +3957,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: 0
+  m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
