@@ -137,4 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 60
-  attackPower: 0
+  attackPower: 12
+  attackSpan: 0.2
+  hp: 300
