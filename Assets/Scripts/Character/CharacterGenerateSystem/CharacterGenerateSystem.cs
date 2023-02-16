@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using DG.Tweening;
 
 public class CharacterGenerateSystem : MonoBehaviour{
 
@@ -36,6 +38,9 @@ public class CharacterGenerateSystem : MonoBehaviour{
 
         [Tooltip("オブジェクト")]
         public GameObject obj = null;
+
+        [Tooltip("リミッター")]
+        public Image limit = null;
 
         [Tooltip("パス")]
         public string path = "";
@@ -79,6 +84,8 @@ public class CharacterGenerateSystem : MonoBehaviour{
 
             prop.prefab = (GameObject)Resources.Load(prop.path);
 
+            prop.limit.gameObject.SetActive(false);
+
             if(!prop.prefab){
                 Debug.LogWarning("Failed to load " + prop.id + ". Please check the path.");
                 return;
@@ -102,7 +109,7 @@ public class CharacterGenerateSystem : MonoBehaviour{
 
             EventTrigger.Entry up = new EventTrigger.Entry();
             up.eventID = EventTriggerType.PointerUp;
-            up.callback.AddListener((e) => PointerUp());
+            up.callback.AddListener((e) => PointerUp(prop.id));
             prop.trigger.triggers.Add(up);
         });
     }
@@ -124,8 +131,33 @@ public class CharacterGenerateSystem : MonoBehaviour{
         InstantiateSystem.instance.CharacterInstantiate(obj);
     }
 
-    public void PointerUp(){
+    public void PointerUp(TREE_ID id){
+        
+        InstantiateSystem.instance.CostCount(m_paramList[(int)id].cost);
         InstantiateSystem.instance.InstantiateNewPosition();
         InstantiateSystem.instance.DestroyCharacterCash();
+        ButtonLimitation(id);
+    }
+
+    /// <summary>
+    /// キャラクターの生成に制限をかける
+    /// </summary>
+    /// <param name="id"></param>
+    private void ButtonLimitation(TREE_ID id){
+        if(InstantiateSystem.instance.isAreaContactFlag == true){
+            characterList[(int)id].limit.gameObject.SetActive(true);
+            characterList[(int)id].trigger.enabled = false;
+
+            characterList[(int)id].limit
+                .DOFillAmount(0f, m_paramList[(int)id].frequency)
+                .SetEase(Ease.Linear)
+                .SetAutoKill(true)
+                .Play()
+                .OnComplete(() =>{
+                    characterList[(int)id].limit.gameObject.SetActive(false);
+                    characterList[(int)id].limit.fillAmount = 1f;
+                    characterList[(int)id].trigger.enabled = true;
+                });
+        }
     }
 }

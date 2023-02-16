@@ -125,7 +125,7 @@ public class CharacterMove : MonoBehaviour{
 
     private void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.CompareTag("Enemy")){
-            m_state = CHARA_STATE.MOVE;
+            m_state = CHARA_STATE.WAIT;
             StopCoroutine(AttackCol(m_paramList[(int)id].frequency));
         }
     }

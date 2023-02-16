@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 using DG.Tweening;
+using SceneChanger;
 
 /// <summary>
 /// ゲームメインを管理する
@@ -37,6 +38,9 @@ public class MainManager : MonoBehaviour{
     [Tooltip("敵ゲージ")]
     public Image enemyGauge = null;
 
+    [Tooltip("神木ゲージ")]
+    public Image treeGauge = null;
+
     /*-------------------------------------------------------------------------------*/
 
     [Space(10)]
@@ -53,6 +57,34 @@ public class MainManager : MonoBehaviour{
 
 
     /*-------------------------------------------------------------------------------*/
+
+    [Space(10)]
+    [Header("ゲームオーバー画面")]
+    [SerializeField]
+    [Tooltip("ゲームオーバー画面")]
+    private GameObject gameOverWindow = null;
+
+    [SerializeField]
+    [Tooltip("終了ボタン")]
+    private Button exitButton = null;
+
+    [SerializeField]
+    [Tooltip("コンティニューボタン")]
+    private Button continueButton = null;
+
+    /*-------------------------------------------------------------------------------*/
+
+    [Space(10)]
+    [Header("ゲームクリア画面")]
+    [SerializeField]
+    [Tooltip("ゲームクリア画面")]
+    private GameObject gameClearWindow = null;
+
+    [SerializeField]
+    [Tooltip("戻るボタン")]
+    private Button backButton = null;
+
+    /*-------------------------------------------------------------------------------*/
     
 
     public enum MAIN_STATE{
@@ -60,7 +92,8 @@ public class MainManager : MonoBehaviour{
         COUNTDOWN,
         START,
         MAIN,
-        RESULT
+        GameClear,
+        GameOver
     }
 
     private void Awake() {
@@ -68,6 +101,8 @@ public class MainManager : MonoBehaviour{
         // インスタンス生成
         if(!instance)
             instance = this;
+
+        startPanel.SetActive(true);
         
         // ゲームメインの更新
         this.UpdateAsObservable()
@@ -77,12 +112,36 @@ public class MainManager : MonoBehaviour{
 
         ChangeState(MAIN_STATE.COUNTDOWN);
         gameUpdatePermit = true;
+        
 
         // ゲージ系を0に設定
         warmGauge.fillAmount = 0f;
         enemyGauge.fillAmount = 0f;
+        treeGauge.fillAmount = 1f;
 
         startText.alpha = 0f;
+
+        exitButton.OnCancelAsObservable()
+            .Where(_=> gameOverWindow.activeSelf)
+            .Subscribe(_=>{
+                #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                    Application.Quit();
+                #endif
+            }).AddTo(this);
+
+        continueButton.OnCancelAsObservable()
+            .Where(_=> gameOverWindow.activeSelf)
+            .Subscribe(_=> {
+                FadeSceneChanger.Instance.ChangeSceneWithFade("Main", 2f, 2f);
+            }).AddTo(this);
+
+        backButton.OnCancelAsObservable()
+            .Where(_=> gameClearWindow.activeSelf)
+            .Subscribe(_=> {
+                FadeSceneChanger.Instance.ChangeSceneWithFade("Title", 2f, 2f);
+            }).AddTo(this);
     }
 
     // 更新処理
@@ -91,7 +150,8 @@ public class MainManager : MonoBehaviour{
             case MAIN_STATE.COUNTDOWN: CountDown(); break;
             case MAIN_STATE.START: GameStart(); break;
             case MAIN_STATE.MAIN: MainUpdate(); break;
-            case MAIN_STATE.RESULT: Result(); break;
+            case MAIN_STATE.GameClear: GameClear(); break;
+            case MAIN_STATE.GameOver: GameOver(); break;
         }
     }
 
@@ -133,6 +193,7 @@ public class MainManager : MonoBehaviour{
                         .OnComplete(() =>{
                              EnemyInstantiateSystem.instance.EnemyInstantiateStart();
                             ChangeState(MAIN_STATE.MAIN);
+                            startPanel.SetActive(false);
                         });
                 });
         }
@@ -144,9 +205,25 @@ public class MainManager : MonoBehaviour{
 
             StartCoroutine(warmGaugeAdditionCol());
         }
+
+        if(treeGauge.fillAmount == 0f){
+            Time.timeScale = 0f;
+            ChangeState(MAIN_STATE.GameOver);
+        }
+
+        if(enemyGauge.fillAmount == 0f){
+            Time.timeScale = 0f;
+            ChangeState(MAIN_STATE.GameClear);
+        }
     }
 
-    private void Result(){
+    private void GameClear(){
+        if(initFlag){
+            initFlag = false;
+        }
+    }
+
+    private void GameOver(){
         if(initFlag){
             initFlag = false;
         }

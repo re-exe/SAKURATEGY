@@ -84,6 +84,7 @@ public class EnemyMove : MonoBehaviour{
 
                 if(enemyHP <= 0f){
                     Destroy(this.gameObject);
+                    MainManager.instance.enemyGauge.fillAmount -= 0.04f;
                 }
 
                 hp = enemyHP;
@@ -97,13 +98,23 @@ public class EnemyMove : MonoBehaviour{
 
             m_charaMove = other.gameObject.GetComponent<CharacterMove>();
             StartCoroutine(AttackCol(attackSpan));
+            StopCoroutine(TreeAttack(attackSpan));
         }
+        
     }
 
     private void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.CompareTag("Character")){
             m_state = ENEMY_STATE.MOVE;
             StopCoroutine(AttackCol(attackSpan));
+            StopCoroutine(TreeAttack(attackSpan));
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Tree")){
+            m_state = ENEMY_STATE.ATTACK;
+            StartCoroutine(TreeAttack(attackSpan));
         }
     }
 
@@ -112,6 +123,17 @@ public class EnemyMove : MonoBehaviour{
             m_charaMove.charaHP = m_charaMove.charaHP - attackPower;
 
             yield return new WaitForSeconds(waittime);
+        }
+    }
+
+    private IEnumerator TreeAttack(float time){
+
+        var p = attackPower / 1000f;
+
+        while(true){
+            MainManager.instance.treeGauge.fillAmount -= p;
+
+            yield return new WaitForSeconds(time);
         }
     }
 }
