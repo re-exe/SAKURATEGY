@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 using SceneChanger;
 
 /// <summary>
@@ -121,8 +122,10 @@ public class MainManager : MonoBehaviour{
 
         startText.alpha = 0f;
 
-        exitButton.OnCancelAsObservable()
-            .Where(_=> gameOverWindow.activeSelf)
+        gameClearWindow.SetActive(false);
+        gameOverWindow.SetActive(false);
+
+        exitButton.OnClickAsObservable()
             .Subscribe(_=>{
                 #if UNITY_EDITOR
                     UnityEditor.EditorApplication.isPlaying = false;
@@ -131,14 +134,12 @@ public class MainManager : MonoBehaviour{
                 #endif
             }).AddTo(this);
 
-        continueButton.OnCancelAsObservable()
-            .Where(_=> gameOverWindow.activeSelf)
+        continueButton.OnClickAsObservable()
             .Subscribe(_=> {
-                FadeSceneChanger.Instance.ChangeSceneWithFade("Main", 2f, 2f);
+                SceneManager.LoadScene("Preparation");
             }).AddTo(this);
 
-        backButton.OnCancelAsObservable()
-            .Where(_=> gameClearWindow.activeSelf)
+        backButton.OnClickAsObservable()
             .Subscribe(_=> {
                 FadeSceneChanger.Instance.ChangeSceneWithFade("Title", 2f, 2f);
             }).AddTo(this);
@@ -221,12 +222,16 @@ public class MainManager : MonoBehaviour{
         if(initFlag){
             initFlag = false;
         }
+
+        gameClearWindow.SetActive(true);
     }
 
     private void GameOver(){
         if(initFlag){
             initFlag = false;
         }
+
+        gameOverWindow.SetActive(true);
     }
 
     /// <summary>
