@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Manager
   - Character
+  - Enemy
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -13,9 +15,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Character
+  - Enemy
+  - Interface
   - 
   - 
   - 
@@ -42,4 +44,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Character
+    uniqueID: 2622138525
+    locked: 0
+  - name: Enemy
+    uniqueID: 2054221823
+    locked: 0
+  - name: UI
+    uniqueID: 2155575915
     locked: 0

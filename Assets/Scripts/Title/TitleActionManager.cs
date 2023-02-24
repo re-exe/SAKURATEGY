@@ -1,10 +1,19 @@
 using UnityEngine;
 using SceneChanger;
+using DG.Tweening;
 
 public class TitleActionManager : MonoBehaviour{
 
     [Tooltip("Input")]
     private PlayerInputScript m_input = null;
+
+    [SerializeField]
+    [Tooltip("点滅するテキスト")]
+    private CanvasGroup flashText = null;
+
+    [SerializeField]
+    [Tooltip("source")]
+    private AudioSource source = null;
 
     private void OnEnable() { m_input.Enable(); }
 
@@ -15,7 +24,14 @@ public class TitleActionManager : MonoBehaviour{
 
         // Click Event
         m_input.UI.Click.performed += _ => {
+            source.Play();
             FadeSceneChanger.Instance.ChangeSceneWithFade("Preparation", 2f, 2f);
         };
+
+        flashText.DOFade(1f, 0.8f)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.Linear)
+            .SetLink(this.gameObject)
+            .Play();
     }
 }

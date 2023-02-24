@@ -4,30 +4,8 @@
         {
             "name": "Player",
             "id": "91a462bf-2725-4dc8-b9a2-7ff06a3ae017",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "f314a292-1501-4d81-8837-72c197ce38ef",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "7afbd894-6a75-437a-952e-81221517c504",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
+            "actions": [],
+            "bindings": []
         },
         {
             "name": "UI",
@@ -119,6 +97,15 @@
                     "type": "PassThrough",
                     "id": "b2a72936-b7f6-4da8-8541-e5198f836b27",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Debug",
+                    "type": "PassThrough",
+                    "id": "9b25659d-d1e3-4171-9b51-d299cd0ea5e3",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -414,10 +401,10 @@
                 {
                     "name": "",
                     "id": "d8d08275-af2e-41a1-9c9f-7d32bf27cc37",
-                    "path": "<Mouse>/position",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "Keyboard&Mouse;PlayerInputControll",
                     "action": "Point",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -542,8 +529,47 @@
                     "action": "TrackedDeviceOrientation",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "06b58bf1-f8cd-40e2-bbdc-173c71ec1267",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Debug",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "68608381-0abb-444a-bcd2-f82266807038",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Debug",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "281d847c-2a65-4cee-9f03-6a121b9456bf",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Debug",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Debug",
+            "id": "1a2e0ad4-63e2-448a-950f-ca06f81c5e65",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [
