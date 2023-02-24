@@ -11,6 +11,10 @@ public class TitleActionManager : MonoBehaviour{
     [Tooltip("点滅するテキスト")]
     private CanvasGroup flashText = null;
 
+    [SerializeField]
+    [Tooltip("source")]
+    private AudioSource source = null;
+
     private void OnEnable() { m_input.Enable(); }
 
     private void OnDisable() { m_input.Disable(); }
@@ -20,6 +24,7 @@ public class TitleActionManager : MonoBehaviour{
 
         // Click Event
         m_input.UI.Click.performed += _ => {
+            source.Play();
             FadeSceneChanger.Instance.ChangeSceneWithFade("Preparation", 2f, 2f);
         };
 

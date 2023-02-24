@@ -73,6 +73,18 @@ public class MainManager : MonoBehaviour{
     [Tooltip("コンティニューボタン")]
     private Button continueButton = null;
 
+    [SerializeField]
+    [Tooltip("ゲームクリア音")]
+    private AudioClip gameClearSound = null;
+
+    [SerializeField]
+    [Tooltip("ゲームオーバー音")]
+    private AudioClip gameOverSound = null;
+
+    [SerializeField]
+    [Tooltip("ソース")]
+    private AudioSource source = null;
+
     /*-------------------------------------------------------------------------------*/
 
     [Space(10)]
@@ -223,6 +235,8 @@ public class MainManager : MonoBehaviour{
             initFlag = false;
         }
 
+        source.clip = gameClearSound;
+        source.Play();
         gameClearWindow.SetActive(true);
     }
 
@@ -231,6 +245,8 @@ public class MainManager : MonoBehaviour{
             initFlag = false;
         }
 
+        source.clip = gameOverSound;
+        source.Play();
         gameOverWindow.SetActive(true);
     }
 

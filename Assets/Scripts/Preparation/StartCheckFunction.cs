@@ -11,9 +11,16 @@ public class StartCheckFunction : MonoBehaviour{
     [Tooltip("ボタン")]
     private List<Button> buttonList = new List<Button>((int)BUTTON_ID.MAX);
 
+    [SerializeField]
+    [Tooltip("Source")]
+    private AudioSource source = null;
+
     private void Awake() {
         buttonList[(int)BUTTON_ID.YES].OnClickAsObservable()
-            .Subscribe(_=> FadeSceneChanger.Instance.ChangeSceneWithFade("Main", 2f, 2f))
+            .Subscribe(_=> {
+                source.Play();
+                FadeSceneChanger.Instance.ChangeSceneWithFade("Main", 2f, 2f);
+            })
             .AddTo(this);
 
         buttonList[(int)BUTTON_ID.NO].OnClickAsObservable()

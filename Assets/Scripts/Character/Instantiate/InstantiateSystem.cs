@@ -39,6 +39,24 @@ public class InstantiateSystem : MonoBehaviour{
     [Header("キャラゲージ")]
     private Image charaGauge = null;
 
+    [Space(10)]
+    [Header("その他")]
+    [SerializeField]
+    [Tooltip("コスト不足表示パネル")]
+    private GameObject costShortagePanel = null;
+
+    [SerializeField]
+    [Tooltip("ソース")]
+    private AudioSource source = null;
+
+    [SerializeField]
+    [Tooltip("警告音")]
+    private AudioClip warningSound = null;
+
+    [SerializeField]
+    [Tooltip("スポーン音")]
+    private AudioClip spawnSound = null;
+
 
     private void Awake() {
         if(!instance){
@@ -55,6 +73,8 @@ public class InstantiateSystem : MonoBehaviour{
         exit.eventID = EventTriggerType.PointerExit;
         exit.callback.AddListener((e) => isAreaContactFlag = false);
         mousePosEvent.triggers.Add(exit);
+
+        costShortagePanel.SetActive(false);
     }
 
     /// <summary>
@@ -109,10 +129,29 @@ public class InstantiateSystem : MonoBehaviour{
         // コスト以下なら
         if(charaGauge.fillAmount <= cost){
             isAreaContactFlag = false;
-            Debug.Log("コストが不足しています");
+            StartCoroutine(CostCol());
         } else {
+
+            source.clip = spawnSound;
+            source.Play();
             // コスト分減少させる。
             charaGauge.fillAmount = -cost;
         }
+    }
+
+    /// <summary>
+    /// コスト不足を表示するパネル
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator CostCol(){
+        costShortagePanel.SetActive(true);
+        source.clip = warningSound;
+        source.Play();
+
+        yield return new WaitForSeconds(1f);
+
+        costShortagePanel.SetActive(false);
+
+        yield return 0;
     }
 }

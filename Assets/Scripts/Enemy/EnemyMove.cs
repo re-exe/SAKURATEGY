@@ -34,6 +34,13 @@ public class EnemyMove : MonoBehaviour{
     [Tooltip("接触している相手の情報")]
     private CharacterMove m_charaMove = null;
 
+    [SerializeField]
+    [Tooltip("攻撃音")]
+    private AudioClip attackSound = null;
+
+    [Tooltip("ソース")]
+    private AudioSource source = null;
+
     [Tooltip("敵の挙動")]
     private enum ENEMY_STATE{
         DUMMY,
@@ -51,6 +58,8 @@ public class EnemyMove : MonoBehaviour{
 
         m_state = ENEMY_STATE.MOVE;
         EnemyBehavior();
+
+        source = GetComponent<AudioSource>();
 
     }
 
@@ -119,8 +128,12 @@ public class EnemyMove : MonoBehaviour{
     }
 
     private IEnumerator AttackCol(float waittime){
+
+        source.clip = attackSound;
+
         while(true){
             m_charaMove.charaHP = m_charaMove.charaHP - attackPower;
+            source.Play();
 
             yield return new WaitForSeconds(waittime);
         }
