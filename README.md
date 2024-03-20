@@ -11,13 +11,6 @@ A graduation work from my school.
 
 * Unity 2021.3.15f1 LTS
 
-# Author
-
-* Planner    : Shun Fujii
-* Programmer : Ren Fujii
-* Member     : Ota College of Information and Commerce
-* E-mail     : 32095@ojs.ac.jp
-
 # License
 
 Copyright 2022 SAKURATEGY Project All Rights Reserved.
